@@ -1,0 +1,40 @@
+[
+  {
+    "id": "ads-block",
+    "type": "field",
+    "outboundTag": "block",
+    "enabled": false
+  },
+  {
+    "id": "ir-domains",
+    "type": "field",
+    "outboundTag": "direct",
+    "domain": [
+      "regexp:.+\\.ir$"
+    ],
+    "enabled": true
+  },
+  {
+    "id": "all-iran-ip",
+    "type": "field",
+    "outboundTag": "direct",
+    "ip": [
+      "geoip:private",
+      "geoip:ir"
+    ],
+    "enabled": true
+  },
+  {
+    "id": "iran-sites",
+    "type": "field",
+    "outboundTag": "direct",
+    "enabled": true
+  },
+  {
+    "id": "ports",
+    "type": "field",
+    "port": "0-65535",
+    "outboundTag": "proxy",
+    "enabled": true
+  }
+]
