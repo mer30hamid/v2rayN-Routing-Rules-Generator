@@ -1,6 +1,8 @@
-name: Generate V2RayN Rules
+name: Generate and Commit V2RayN Rules
 
 on:
+  schedule:
+    - cron: '0 0 * * *' # Runs at 00:00 UTC every day
   push:
     branches:
       - main
@@ -14,10 +16,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
+      with:
+        persist-credentials: false # We will provide the credentials separately
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.x' # Specify the required Python version here
 
@@ -30,8 +34,27 @@ jobs:
       run: |
         python generate-rules.py
 
-    - name: Upload generated v2rayN rules
-      uses: actions/upload-artifact@v2
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add v2rayN_rules.json
+        git commit -m 'Update v2rayN rules [skip ci]'
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Add comment to commit
+      uses: actions/github-script@v6
       with:
-        name: v2rayN_rules
-        path: ./v2rayN_rules.json
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          const { context } = require('@actions/github');
+          const commit_sha = context.sha;
+          const comment = "V2RayN rules have been generated, committed, and pushed.";
+          await github.rest.repos.createCommitComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            commit_sha: commit_sha,
+            body: comment
+          });
