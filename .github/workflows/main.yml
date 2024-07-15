@@ -20,6 +20,11 @@ jobs:
       with:
         persist-credentials: false # We will provide the credentials separately
 
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '20' # Specify the required Node.js version
+
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
