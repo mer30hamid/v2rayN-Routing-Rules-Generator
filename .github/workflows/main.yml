@@ -41,7 +41,7 @@ jobs:
 
     - name: Commit and push changes
       env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
@@ -53,7 +53,7 @@ jobs:
     - name: Add comment to commit
       uses: actions/github-script@v6
       with:
-        github-token: ${{ secrets.GH_TOKEN }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}
         script: |
           const { context } = require('@actions/github');
           const commit_sha = context.sha;
