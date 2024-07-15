@@ -1,0 +1,66 @@
+name: Generate and Commit V2RayN Rules
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs at 00:00 UTC every day
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        persist-credentials: false # We will provide the credentials separately
+
+    # - name: Set up Node.js
+      # uses: actions/setup-node@v3
+      # with:
+        # node-version: '20' # Specify the required Node.js version
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.x' # Specify the required Python version here
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+
+    - name: Run the generate-rules script
+      run: |
+        python generate-rules.py
+
+    - name: Commit and push changes
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      run: |
+        git config --global user.name 'github-actions[bot]'
+        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git add v2rayN_rules.json
+        git commit -m 'Update v2rayN rules [skip ci]'
+        git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+        git push
+
+    - name: Add comment to commit
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.GH_TOKEN }}
+        script: |
+          const { context } = require('@actions/github');
+          const commit_sha = context.sha;
+          const comment = "V2RayN rules have been generated, committed, and pushed.";
+          await github.rest.repos.createCommitComment({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            commit_sha: commit_sha,
+            body: comment
+          });
