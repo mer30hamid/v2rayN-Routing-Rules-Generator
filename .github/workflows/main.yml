@@ -40,19 +40,20 @@ jobs:
         python generate-rules.py
 
     - name: Commit and push changes
+      env:
+        GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         git config --global user.name 'github-actions[bot]'
         git config --global user.email 'github-actions[bot]@users.noreply.github.com'
         git add v2rayN_rules.json
         git commit -m 'Update v2rayN rules [skip ci]'
+        git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
         git push
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Add comment to commit
       uses: actions/github-script@v6
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GH_TOKEN }}
         script: |
           const { context } = require('@actions/github');
           const commit_sha = context.sha;
