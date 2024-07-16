@@ -1,3 +1,5 @@
+[![en](https://img.shields.io/badge/lang-fa-red.svg) فارسی](https://github.com/mer30hamid/v2rayN-Routing-Rules-Generator/edit/main/README.fa-IR.md)
+
 # My Config generator script for v2rayN
 
  A python script that generates Routing Rules in json format for [v2rayN application](https://github.com/2dust/v2rayN)
@@ -21,29 +23,33 @@
 
 ## Usage methods
 
-#### Import Rules From Subscription url :
+### Method 1: Import Rules From Subscription url
 
-  1. paste `https://raw.githubusercontent.com/mer30hamid/v2rayN-Routing-Rules-Generator/main/v2rayN_rules.json` in:
+  1. copy this address:
+  ```
+  https://raw.githubusercontent.com/mer30hamid/v2rayN-Routing-Rules-Generator/main/v2rayN_rules.json
+  ```
+  and paste it here:
      
-     **Settings -> RoutingSetting -> Advanced Function -> Add -> URL(Optional)**
+  **Settings -> RoutingSetting -> Advanced Function -> Add -> URL(Optional)**
      
-     >**Note: you can use your own server and url, this url in this repo updates every day automatically using github actions!**
+  >**Note: you can use your own server and url, this url in this repo updates every day automatically using github actions!**
 
-  3. set a name (in Remarks for example "Iran")
-  4. click on "Import Rules From Subscription URL"
-  5. when asked "do you want to append rules? ..." press `yes`
-  6. click "Confirm" to save rules.
+  2. set a name (in Remarks for example "Iran")
+  3. click on "Import Rules From Subscription URL"
+  4. when asked "do you want to append rules? ..." press `yes`
+  5. click "Confirm" to save rules.
     
   ![image](https://github.com/user-attachments/assets/cbbe22dc-4143-4e04-a161-2351d4eb433a)
 
-  7. in the bottom of app (routing section), select it (Iran)
+  6. in the bottom of app (routing section), select it (Iran)
 
   ![image](https://github.com/user-attachments/assets/a38613e9-2126-429c-a22e-000a877dcced)
 
 
      
 
-#### Import Rules from file:
+### Method 2: Import Rules from file
 
   1. go to **Settings -> RoutingSetting -> Advanced Function -> Add** 
 
