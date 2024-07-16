@@ -13,8 +13,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
       with:
-        # persist-credentials: false # We will provide the credentials separately
-        token: ${{ secrets.PAT }}
+        persist-credentials: false # We will provide the credentials separately
+        # token: ${{ secrets.GITHUB_TOKEN }}
 
     # - name: Set up Node.js
       # uses: actions/setup-node@v3
@@ -36,27 +36,27 @@ jobs:
         python generate-rules.py
 
     - name: Commit and push changes
-      # env:
-        # GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      ENV:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name 'HAMID'
         git config --global user.email 'mer30hamid@gmail.com'
         git add v2rayN_rules.json
         git commit -m 'Update v2rayN rules [skip ci]'
-        # git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+        git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
         git push
 
-    - name: Add comment to commit
-      uses: actions/github-script@v6
-      with:
-        github-token: ${{ secrets.GH_TOKEN }}
-        script: |
-          const { context } = require('@actions/github');
-          const commit_sha = context.sha;
-          const comment = "V2RayN rules have been generated, committed, and pushed.";
-          await github.rest.repos.createCommitComment({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            commit_sha: commit_sha,
-            body: comment
-          });
+    # - name: Add comment to commit
+      # uses: actions/github-script@v6
+      # with:
+        # github-token: ${{ secrets.GITHUB_TOKEN }}
+        # script: |
+          # const { context } = require('@actions/github');
+          # const commit_sha = context.sha;
+          # const comment = "V2RayN rules have been generated, committed, and pushed.";
+          # await github.rest.repos.createCommitComment({
+            # owner: context.repo.owner,
+            # repo: context.repo.repo,
+            # commit_sha: commit_sha,
+            # body: comment
+          # });
