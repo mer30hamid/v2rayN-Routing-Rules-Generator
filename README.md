@@ -1,4 +1,4 @@
-[![en](https://img.shields.io/badge/lang-fa-red.svg) فارسی](https://github.com/mer30hamid/v2rayN-Routing-Rules-Generator/edit/main/README.fa-IR.md)
+[![en](https://img.shields.io/badge/lang-fa-red.svg) فارسی](https://github.com/mer30hamid/v2rayN-Routing-Rules-Generator/blob/main/README.fa-IR.md)
 
 # My Config generator script for v2rayN
 
