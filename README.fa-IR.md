@@ -1,5 +1,6 @@
 [![en](https://img.shields.io/badge/lang-en-red.svg) ENGLISH](https://github.com/mer30hamid/v2rayN-Routing-Rules-Generator/blob/main/README.md)
 
+<div dir="rtl">
 # اسکریپت مولد پیکربندی من برای v2rayN
 
 یک اسکریپت پایتون که قوانین مسیریابی را با فرمت json برای برنامه [v2rayN برنامه](https://github.com/2dust/v2rayN) ایجاد می‌کند.
@@ -47,11 +48,13 @@
 ​     
 
 ### روش دوم: وارد کردن قوانین از طریق باز کردن فایل
-
 1. به این مسیر بروید:
-  **Settings -> RoutingSetting -> Advanced Function -> Add** 
 
- و یک نام برای آن بگذارید (در قسمت Remarks مثلا بگذارید "Iran-local")
+**Settings -> RoutingSetting -> Advanced Function -> Add**
+
+  
+  و یک نام برای آن بگذارید (در قسمت Remarks مثلا بگذارید "Iran-local")
+
 2. روی "Import Rules from file" کلیک کنید و فایلی که تولید کردید (یا دانلود کردید) با نام "v2rayN_rules.json" را انتخاب کنید.
 3. روی "yes" و سپس "Confirm" کلیک کنید تا قوانین ذخیره شوند.
 
@@ -61,3 +64,5 @@
 
   ![image](https://github.com/user-attachments/assets/a38613e9-2126-429c-a22e-000a877dcced)
 
+
+</div>
