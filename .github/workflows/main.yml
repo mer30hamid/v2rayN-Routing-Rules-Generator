@@ -3,13 +3,6 @@ name: Generate and Commit V2RayN Rules
 on:
   schedule:
     - cron: '0 0 * * *' # Runs at 00:00 UTC every day
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
 
 jobs:
   build:
@@ -19,7 +12,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-        persist-credentials: false # We will provide the credentials separately
+        # persist-credentials: false # We will provide the credentials separately
+        token: ${{ secrets.PAT }}
 
     # - name: Set up Node.js
       # uses: actions/setup-node@v3
@@ -34,7 +28,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+            pip install -r requirements.txt
 
     - name: Run the generate-rules script
       run: |
@@ -44,8 +38,8 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
-        git config --global user.name 'github-actions[bot]'
-        git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+        git config --global user.name 'HAMID'
+        git config --global user.email 'mer30hamid@gmail.com'
         git add v2rayN_rules.json
         git commit -m 'Update v2rayN rules [skip ci]'
         git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
