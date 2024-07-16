@@ -36,7 +36,7 @@ jobs:
         python generate-rules.py
 
     - name: Commit and push changes
-      ENV:
+      env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
         git config --global user.name 'HAMID'
