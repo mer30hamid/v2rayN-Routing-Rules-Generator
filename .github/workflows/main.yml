@@ -13,8 +13,8 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v3
       with:
-        # persist-credentials: false # We will provide the credentials separately
-        token: ${{ secrets.PAT }}
+        persist-credentials: false # We will provide the credentials separately
+        # token: ${{ secrets.PAT }}
 
     # - name: Set up Node.js
       # uses: actions/setup-node@v3
