@@ -45,7 +45,7 @@ def save_to_file(file_full_path, content, mode='w'):
         except OSError as exc:  # Guard against race condition
             if exc.errno != errno.EEXIST:
                 raise
-    with open(file_full_path, mode) as f:
+    with open(file_full_path, mode, encoding="utf-8") as f:
         f.write(content)
 
 
@@ -142,13 +142,13 @@ if __name__ == '__main__':
     update_iran_domains()
     block_domain_list = get_block_domain_list()
     iran_domain_list = get_iran_domain_list()
-    with open(v2rayN_template_file_path, 'r') as v2rayN_template_file:
+    with open(v2rayN_template_file_path, 'r', encoding="utf-8") as v2rayN_template_file:
         v2rayN_rules = json.load(v2rayN_template_file)
         for rule in v2rayN_rules:
             if rule['id'] == 'ads-block':
                 rule['domain'] = block_domain_list
             if rule['id'] == 'iran-sites':
                 rule['domain'] = iran_domain_list
-    with open(v2rayN_output_file_path, 'w') as f:
+    with open(v2rayN_output_file_path, 'w', encoding="utf-8") as f:
         json.dump(v2rayN_rules, f)
     log("v2rayN rules file saved to: " + v2rayN_output_file_path)
