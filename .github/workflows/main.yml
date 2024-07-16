@@ -36,14 +36,15 @@ jobs:
         python generate-rules.py
 
     - name: Commit and push changes
-      env:
-        GH_TOKEN: ${{ secrets.GH_TOKEN }}
+      # env:
+        # GH_TOKEN: ${{ secrets.GH_TOKEN }}
       run: |
         git config --global user.name 'HAMID'
         git config --global user.email 'mer30hamid@gmail.com'
+        git config credential.helper store
         git add v2rayN_rules.json
         git commit -m 'Update v2rayN rules [skip ci]'
-        git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
+        # git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
         git push
 
     - name: Add comment to commit
