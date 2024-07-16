@@ -45,7 +45,7 @@ jobs:
         git config --global user.name 'HAMID'
         git config --global user.email 'mer30hamid@gmail.com'
         git add v2rayN_rules.json
-        git commit -m '🚀 Rules Updated - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')'
+        git commit -m "🚀 Rules Updated - $(TZ='Asia/Tehran' date '+%Y-%m-%d %H:%M:%S')"
         git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/${{ github.repository }}
         git push
 
