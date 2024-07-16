@@ -1,6 +1,6 @@
 [![en](https://img.shields.io/badge/lang-en-red.svg) ENGLISH](https://github.com/mer30hamid/v2rayN-Routing-Rules-Generator/blob/main/README.md)
 
-<div dir="rtl">
+
 # اسکریپت مولد پیکربندی من برای v2rayN
 
 یک اسکریپت پایتون که قوانین مسیریابی را با فرمت json برای برنامه [v2rayN برنامه](https://github.com/2dust/v2rayN) ایجاد می‌کند.
@@ -64,5 +64,3 @@
 
   ![image](https://github.com/user-attachments/assets/a38613e9-2126-429c-a22e-000a877dcced)
 
-
-</div>
