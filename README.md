@@ -4,6 +4,8 @@
 
  A python script that generates Routing Rules in json format for [v2rayN application](https://github.com/2dust/v2rayN)
 
+The main purpose of producing these rules is to solve the problem of opening Iranian sites, so that when we enter a site ftom iran, it doesn't get a problem that we are using a VPN, etc.
+
 ## Features:
    * "block list" for persian bad links (https://github.com/MasterKia/PersianBlocker/)
    * "white list" for persian sites (https://github.com/SamadiPour/iran-hosted-domains/)
