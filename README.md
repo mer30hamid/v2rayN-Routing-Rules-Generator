@@ -9,19 +9,8 @@ The main purpose of producing these rules is to solve the problem of opening Ira
 ## Features:
    * "block list" for persian bad links (https://github.com/MasterKia/PersianBlocker/)
    * "white list" for persian sites (https://github.com/SamadiPour/iran-hosted-domains/)
-   * Cache downloaded lists ("block list" and "white list") and control cache time
-
-## Dependencies:
-  * python 3 (https://www.python.org/downloads)
-  * python requirements:
-    * requests
-
-## Generate config:
-
-  * if you are running script for first time:
-    * get and install requirements:`pip install -r requirements.txt`
-
-  * run the script using python:`python generate-rules.py` this will generate a file with name `v2rayN_rules.json`
+   * when running script, it Caches downloaded lists ("block list" and "white list") and you can control cache time
+   * Automatic Update using GitHub Actions
 
 ## Usage methods
 
@@ -47,10 +36,7 @@ The main purpose of producing these rules is to solve the problem of opening Ira
   6. in the bottom of app (routing section), select it (Iran)
 
   ![image](https://github.com/user-attachments/assets/a38613e9-2126-429c-a22e-000a877dcced)
-
-
-     
-
+   
 ### Method 2: Import Rules from file
 
   1. go to **Settings -> RoutingSetting -> Advanced Function -> Add** 
@@ -67,3 +53,13 @@ The main purpose of producing these rules is to solve the problem of opening Ira
 
   ![image](https://github.com/user-attachments/assets/a38613e9-2126-429c-a22e-000a877dcced)
 
+## Running and development hints
+### Dependencies:
+  * python 3 (https://www.python.org/downloads)
+  * python requirements:
+    * requests
+
+### Generate config:
+  * if you are running script for first time:
+    * get and install requirements:`pip install -r requirements.txt`
+  * run the script using python:`python generate-rules.py` this will generate a file with name `v2rayN_rules.json`
